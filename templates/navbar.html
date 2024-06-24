@@ -1,0 +1,55 @@
+{% load static %}
+<div class="iq-sidebar  sidebar-default ">
+    <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
+        <a href="{% url 'homeView' %}" class="header-logo">
+            <img src="{% static 'assets/images/onlydrive.png' %}" class="img-fluid rounded-normal light-logo" alt="logo">
+         </a>
+        <div class="iq-menu-bt-sidebar">
+            <i class="las la-bars wrapper-menu"></i>
+        </div>
+    </div>
+    <div class="data-scrollbar" data-scroll="1">
+        <nav class="iq-sidebar-menu">
+            <ul id="iq-sidebar-toggle" class="iq-menu">
+                 <li class="active">
+                        <a href="{% url 'homeView' %}" class="">
+                            <i class="las la-home iq-arrow-left"></i><span>Dashboard</span>
+                        </a>
+                    <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                    </ul>
+                 </li>
+                 <li class=" ">
+                        <a href="{% url 'files' %}" class="">
+                            <i class="lar la-file-alt iq-arrow-left"></i><span>All files</span>
+                        </a>
+                    <ul id="page-files" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                    </ul>
+                 </li>
+                 <li class=" ">
+                        <a href="{% url 'folders' %}" class="">
+                            <i class="las la-boxes iq-arrow-left"></i><span>Folders</span>
+                        </a>
+                    <ul id="page-folders" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                    </ul>
+                 </li>
+                 <li class=" ">
+                    <a href="{% url 'listApiKeys' %}" class="">
+                        <i class="las la-boxes iq-arrow-left"></i><span>API Keys</span>
+                    </a>
+                    <ul id="page-folders" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                    </ul>
+                 </li>
+            </ul>
+        </nav>
+        <div class="sidebar-bottom">
+            <h4 class="mb-3"><i class="las la-cloud mr-2"></i>Storage</h4>
+            <p>{{used}} / {{total}} GB Used</p>
+            <div class="iq-progress-bar mb-3">
+                <span class="bg-new-red iq-progress progress-1" data-percent="{{percent}}">
+                </span>
+            </div>
+            <p>{{percent}}% Full - {{free}} GB Free</p>
+        </div>
+        <div class="p-3"></div>
+    </div>
+    </div>

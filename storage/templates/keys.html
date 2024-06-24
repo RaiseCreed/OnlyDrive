@@ -1,0 +1,60 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block body %}
+
+<div class="content-page">
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="card card-block card-stretch card-transparent">
+                    <div class="card-header d-flex justify-content-between pb-0">
+                        <div class="header-title">
+                            <h3 class="card-title">API Keys</h3>
+                            <br>
+                            <a href="{% url 'createApiKeys' %}"><span for="formFile" class="add-item">Create new API key</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <table class="table mb-0 table-borderless tbl-server-info">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Created</th>
+                        <th scope="col">Expires</th>
+                        <th scope="col">Prefix</th>
+                        <th scope="col">Allowed methods</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for key in keys %}
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="icon-small bg-danger rounded mr-3">
+                                        <i class="ri-key-fill"></i>
+                                    </div>
+                                    <div style="cursor: pointer;">{{key.name}}</div>
+                                </div>
+                            </td>
+                            <td>{{key.created}}</td>
+                            <td>{{key.expiry_date}}</td>
+                            <td>{{key.prefix}}</td>
+                            <td>{{key.allowed_methods}}</td>
+                            <td><a href="{% url 'deleteApiKeys' key.id %}"><h5 class="add-item">Delete</b></h5></a></td>
+                        </tr>
+                    {% endfor %}
+                   
+                </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

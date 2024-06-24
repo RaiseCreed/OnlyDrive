@@ -1,0 +1,88 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block body %}
+
+<div class="content-page">
+    <div class="container-fluid">
+        
+        {% include 'search-bar.html' %}
+
+        <div class="row">
+
+            
+            <div class="col-lg-12">
+                <div class="card card-block card-stretch card-transparent">
+                    <div class="card-header d-flex justify-content-between pb-0">
+                        <div class="header-title">
+                            <a href="{% url 'addFile' %}"><span for="formFile" class="add-item">Add file</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-8 col-xl-8"> 
+                <div class="card card-block card-stretch card-height files-table">                   
+                    <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                            <h4 class="card-title">All files</h4>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="table-responsive">
+                            <table class="table mb-0 table-borderless tbl-server-info">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Modified</th>
+                                    <th scope="col">Created</th>
+                                    <th scope="col">Folder</th>
+                                    <th scope="col">Size</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% for file in files %}
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="icon-small bg-danger rounded mr-3">
+                                                    <i class="ri-file-upload-line"></i>
+                                                </div>
+                                                <div style="cursor: pointer;">{{file.get_full_name}}</div>
+                                            </div>
+                                        </td>
+                                        <td>{{file.modified}}</td>
+                                        <td>{{file.created}}</td>
+                                        <td><a href="{% url 'singleFolder' file.folder.id %}">{{file.folder}}</a></td>
+                                        <td>{{file.get_size_MB}} MB</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <span class="dropdown-toggle" id="dropdownMenuButton6" data-toggle="dropdown">
+                                                    <i class="ri-more-fill"></i>
+                                                </span>
+                                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton6">
+                                                    <a class="dropdown-item" href="{% url 'deleteFile' file.id %}"><i class="ri-delete-bin-6-fill mr-2"></i>Delete</a>
+                                                    <a class="dropdown-item" href="{% url 'renameFile' file.id %}"><i class="ri-pencil-fill mr-2"></i>Rename file</a>
+                                                    <a class="dropdown-item" href="{% url 'downloadFile' file.id %}"><i class="ri-file-download-fill mr-2"></i>Download</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                               
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% include 'paginator.html' with object=files %}
+
+    </div>
+</div>
+
+{% endblock body %}

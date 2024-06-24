@@ -1,0 +1,50 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block body %}
+
+<div class="content-page">
+    <div class="container-fluid" style="text-align: center;">
+        <div class="row">
+
+            <div class="col-lg-7 mx-auto">
+                <div class="card card-block card-stretch card-height plan-bg">
+                    <div class="card-body">
+                        <h3 class="mb-3 text-white">Adding file</b></h3>    
+                        <br>
+                        <br>
+
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <h4 class="mb-3 text-white">Select file</b></h4>
+                            <input type="file" class="floating-input form-control mb-4" style="font-size: 20px; height: 60px;" name="file" value="">
+
+                            <h4 class="mb-3 text-white">Select Folder</b></h4>
+                            <select name="folder" id="folder">
+                                {% for folder in folders %}
+                                    <option value="{{folder.id}}">{{folder.name}}</option>
+                                {% endfor %}
+                            </select>
+
+                            <br><br><br>
+
+                            <input type="submit" value="Create" class="btn btn-primary-alter mr-4">
+                            <a href="{% url 'files' %}"><span class="btn btn-primary-alter">Go back</span></a>
+
+                            <br><br><br>
+
+                            {% if message %}
+                                <h4 class="mb-3 text-white">{{message}}</b></h4>
+                            {% endif %}
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

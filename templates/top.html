@@ -1,0 +1,56 @@
+{% load static %}
+<div class="iq-top-navbar">
+    <div class="iq-navbar-custom">
+        <nav class="navbar navbar-expand-lg navbar-light p-0">
+        <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
+            <i class="ri-menu-line wrapper-menu"></i>
+            <a href="{% url 'homeView' %}" class="header-logo">
+                <img src="{% static 'assets/images/onlydrive.png' %}" class="img-fluid rounded-normal light-logo" alt="logo">
+            </a>
+        </div>
+            <div class="iq-search-bar device-search">
+            </div>
+
+            <div class="d-flex align-items-center">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"  aria-label="Toggle navigation">
+                <i class="ri-menu-3-line"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-list align-items-center">
+                    
+
+                    <li class="nav-item nav-icon dropdown"> 
+                        <a href="#" class="search-toggle dropdown-toggle" id="dropdownMenuButton02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                        <i class="ri-settings-3-line"></i>
+                        </a>
+                        <div class="iq-sub-dropdown dropdown-menu" aria-labelledby="dropdownMenuButton03">
+                            <div class="card mb-0">
+                                <div class="card-header d-flex justify-content-between align-items-center mb-0">
+                                <div class="header-title">
+                                    <h4 class="card-title mb-0">Profile</h4>
+                                </div>
+                                <b class="btn btn-primary">X</b>
+                                </div>
+                                <div class="card-body">
+                                    <div class="profile-header">
+                                        <div class="cover-container text-center">
+                                            <div class="rounded-circle profile-icon mx-auto d-block">
+                                                <img src="{% static 'assets/images/favicon.ico' %}" alt="">
+                                            </div>
+                                            <div class="profile-detail mt-3">
+                                            <h5><a href="../app/user-profile-edit.html">{{request.user.username}}</a></h5>
+                                            <p>{{request.user.email}}</p>
+                                            </div>
+                                            <a href="{% url 'logout' %}" class="btn btn-primary">Sign Out</a>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    </ul>                     
+                </div> 
+            </div>
+        </nav>
+    </div>
+</div>

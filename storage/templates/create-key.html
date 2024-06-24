@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block body %}
+
+<div class="content-page">
+    <div class="container-fluid" style="text-align: center;">
+        <div class="row">
+
+            <div class="col-lg-7 mx-auto">
+                <div class="card card-block card-stretch card-height plan-bg">
+                    <div class="card-body">
+                        <h4 class="mb-3 text-white">Creating API Key</b></h4>    
+                        <br>
+                        <br>
+
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <h4 class="mb-3 text-white">Key name</b></h4>
+                            <input type="text" maxlength="100" class="floating-input form-control mb-4" style="font-size: 20px;" name="keyName" value="">
+
+                            <h4 class="mb-3 text-white">Expires on</b></h4>
+                            <input type="datetime-local" maxlength="100" class="floating-input form-control mb-4" style="font-size: 20px;" name="keyDate" value="">
+
+                            <h4 class="mb-3 text-white">Allowed methods</b></h4>
+                            <br><br>
+
+                            <span class="checkbox-text">GET</span> <input type="checkbox" value="GET" class="checkbox-method" name="methodGet">
+                            <span class="checkbox-text">POST</span> <input type="checkbox" value="POST" class="checkbox-method" name="methodPost">
+                            <span class="checkbox-text">DELETE</span> <input type="checkbox" value="DELETE" class="checkbox-method" name="methodDelete">
+                            <span class="checkbox-text">PATCH</span> <input type="checkbox" value="PATCH" class="checkbox-method" name="methodPatch">
+
+                            <br><br><br>
+                            <input type="submit" value="Create" class="btn btn-primary-alter mr-4">
+                            <a href="{% url 'listApiKeys' %}"><span class="btn btn-primary-alter">Go back</span></a>
+
+                            <br><br><br>
+
+                            {% if message %}
+                                <h4 class="mb-3 text-white">{{message}}</b></h4>
+                            {% endif %}
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

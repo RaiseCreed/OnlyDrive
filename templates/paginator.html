@@ -1,0 +1,30 @@
+<div class="row" style="margin-top: 10em;">
+    <div class="col-lg-8">
+        {% if object.has_other_pages %}
+            <div class="pagination">
+                
+                <ul class="container">
+                    
+                    {% if object.has_previous %}
+                        <li><a href="?q={{searchFor}}&page={{object.previous_page_number}}" class="page-button">&#10094; Previous</a></li>
+                    {% endif %}
+                    
+                    {% for page in custom_range %}
+
+                        {% if page == object.number %}
+                        <li><a href="?q={{searchFor}}&page={{page}}" class="page-button-active">{{page}}</a></li>
+                        {% else %}
+                        <li><a href="?q={{searchFor}}&page={{page}}" class="page-button">{{page}}</a></li>
+                        {% endif %}
+
+                    {% endfor %}
+
+                    {% if object.has_next %}
+                        <li><a href="?q={{searchFor}}&page={{object.next_page_number}}" class="page-button">Next &#10095;</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        {% endif %}
+
+    </div>
+</div>

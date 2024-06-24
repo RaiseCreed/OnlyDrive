@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block body %}
+
+<div class="content-page">
+    <div class="container-fluid" style="text-align: center;">
+        <div class="row">
+
+            <div class="col-lg-7 mx-auto">
+                <div class="card card-block card-stretch card-height  plan-bg">
+                    <div class="card-body">
+                        <h4 class="mb-3 text-white">Do you want to delete <b>"{{object}}"</b> ? </h4>    
+                        <br>
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <input type="submit" value="Delete" class="btn btn-primary-alter mr-4">
+                            <a href="{{request.META.HTTP_REFERER}}"><span class="btn btn-primary-alter">Go back</span></a>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
